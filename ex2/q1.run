@@ -1,0 +1,12 @@
+#!/bin/bash −l 
+
+#SBATCH −−nodes=2 
+#SBATCH −−ntasks−per−node=1 
+#SBATCH −−cpus−per−task=1 
+#SBATCH −−time=20:00 
+#SBATCH −−qos=parallel 
+#SBATCH −−account=math−505 
+#SBATCH −−output=./result1.txt 
+
+module load gcc openmpi python py-mpi4py
+srun python q1.py

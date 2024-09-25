@@ -1,0 +1,9 @@
+#!/bin/bash -l
+
+#SBATCH --nodes=2
+#SBATCH --ntasks-per-node=20
+#SBATCH --cpus-per-task=1
+#SBATCH --time-per-task=1:20:00
+#SBATCH --account=math-505
+#SBATCH --qos=parallel
+#SBATCH --output=./results0.txt
