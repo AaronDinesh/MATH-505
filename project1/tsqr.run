@@ -1,0 +1,11 @@
+#!/bin/bash -l
+#SBATCH --nodes=16
+#SBATCH --ntasks-per-node=4
+#SBATCH --cpus-per-task=1
+#SBATCH --time=30:00
+#SBATCH --qos=parallel
+#SBATCH --account=math-505
+#SBATCH --output=./tsqr.txt
+
+module load gcc openmpi python py-mpi4py
+srun python tsqr_test.py
