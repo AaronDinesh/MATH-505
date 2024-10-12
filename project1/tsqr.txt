@@ -8,30 +8,6 @@ TabError: inconsistent use of tabs and spaces in indentation
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-    step*=2
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
@@ -41,66 +17,6 @@ TabError: inconsistent use of tabs and spaces in indentation
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-    step*=2
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
@@ -119,15 +35,7 @@ TabError: inconsistent use of tabs and spaces in indentation
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
@@ -136,16 +44,15 @@ TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
-    step*=2
-TabError: inconsistent use of tabs and spaces in indentation
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
@@ -176,8 +83,33 @@ TabError: inconsistent use of tabs and spaces in indentation
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
@@ -190,20 +122,89 @@ TabError: inconsistent use of tabs and spaces in indentation
   File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
     step*=2
 TabError: inconsistent use of tabs and spaces in indentation
-srun: error: h083: tasks 36-39: Exited with exit code 1
-srun: Terminating StepId=4085301.0
-srun: error: h073: tasks 0-3: Exited with exit code 1
-srun: error: h088: tasks 56-59: Exited with exit code 1
-srun: error: h078: tasks 20-23: Exited with exit code 1
-srun: error: h076: tasks 12-15: Exited with exit code 1
-srun: error: h086: tasks 48-51: Exited with exit code 1
-srun: error: h075: tasks 8-11: Exited with exit code 1
-srun: error: h081: tasks 32-35: Exited with exit code 1
-srun: error: h080: tasks 28-31: Exited with exit code 1
-srun: error: h077: tasks 16-19: Exited with exit code 1
-srun: error: h084: tasks 40-43: Exited with exit code 1
-srun: error: h090: tasks 60-63: Exited with exit code 1
-srun: error: h079: tasks 24-27: Exited with exit code 1
-srun: error: h074: tasks 4-7: Exited with exit code 1
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+    step*=2
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+TabError: inconsistent use of tabs and spaces in indentation
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+    step*=2
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
+  File "/home/dinesh/MATH-505/project1/tsqr_test.py", line 58
+    step*=2
+TabError: inconsistent use of tabs and spaces in indentation
 srun: error: h087: tasks 52-55: Exited with exit code 1
+srun: Terminating StepId=4085302.0
+slurmstepd: error: *** STEP 4085302.0 ON h073 CANCELLED AT 2024-10-12T16:52:43 ***
+srun: error: h073: tasks 0-3: Exited with exit code 1
+srun: error: h076: tasks 12-15: Exited with exit code 1
+srun: error: h081: tasks 32-35: Exited with exit code 1
+srun: error: h075: tasks 8-11: Exited with exit code 1
 srun: error: h085: tasks 44-47: Exited with exit code 1
+srun: error: h080: tasks 28-31: Exited with exit code 1
+srun: error: h090: tasks 60-63: Exited with exit code 1
+srun: error: h078: tasks 20-23: Exited with exit code 1
+srun: error: h083: tasks 36-39: Exited with exit code 1
+srun: error: h088: tasks 56-59: Exited with exit code 1
+srun: error: h077: tasks 16-19: Exited with exit code 1
+srun: error: h079: tasks 24-27: Exited with exit code 1
+srun: error: h084: tasks 40-43: Exited with exit code 1
+srun: error: h086: tasks 48-51: Exited with exit code 1
+srun: error: h074: tasks 4-7: Exited with exit code 1
