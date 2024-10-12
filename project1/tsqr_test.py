@@ -39,23 +39,25 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
 
     Y_local, R_local = np.linalg.qr(A_local)
     Y_local_arr.append(Y_local)
+
     step = 1
     while step < comm.Get_size():
-        if rank % 2**step == 0:
-            if rank +step < size:
-                print(rank, " recieving from ", rank+step)
+        partner = rank ^ step
+
+        if partner < size:
+            if rank < partner:
+                print(rank, " recieving from ", partner)
                 neighbor_r = np.zeros_like(R_local, dtype=np.float64)
-                comm.Recv(neighbor_r, source=rank+step, tag=1)
+                comm.Recv(neighbor_r, source=partner, tag=1)
                 print(rank, " finished receiving")
                 Y_local, R_local = np.linalg.qr(np.vstack((R_local, neighbor_r)))
                 Y_local_arr.append(Y_local)
-        else:
-            print(rank, " sending to ", rank-step)
-            comm.Send(R_local, dest=rank-step, tag=1)
-            print(rank, " finished Sending")
-            break
+            else:
+                print(rank, " sending to ", rank-step)
+                comm.Send(R_local, dest=partner, tag=1)
+                print(rank, " finished Sending")
+                break
         
-        comm.Barrier()
         step*=2
 
     return Y_local_arr, R_local
