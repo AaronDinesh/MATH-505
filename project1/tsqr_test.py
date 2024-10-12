@@ -54,8 +54,9 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
             comm.Send(R_local, dest=rank-step, tag=1)
             print(rank, " finished Sending")
             break
+        
         comm.Barrier()
-	step*=2
+        step*=2
 
     return Y_local_arr, R_local
 
