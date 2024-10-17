@@ -1,2 +1,8 @@
 cluster_mount
 copy.sh
+*.docx
+*.pdf
+*.drawio
+*.tmp
+*.ipynb_checkpoints
+*.png
