@@ -6,7 +6,7 @@
 #SBATCH --qos=parallel
 #SBATCH --account=math-505
 ##The format is RunNumber_RowSize_ColSize_ProcCount.txt
-#SBATCH --output=./runs/cgs_run_5_65536_390_512.txt
+#SBATCH --output=./runs/cgs_run_1_65536_790_512.txt
 
 module load gcc openmpi python py-mpi4py
 srun python cgs.py
