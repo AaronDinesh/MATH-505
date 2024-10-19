@@ -4,7 +4,7 @@ import sys
 
 #Set to true, if you want the output to be in CSV friendly format
 CSV_OUT = True
-
+SPARSE_MATRIX_USE = False
 
 # put this somewhere but before calling the asserts
 sys_excepthook = sys.excepthook
@@ -50,9 +50,15 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 
-#These seem to be the values that result in a PSD matrix
-matrix_rows = 2**8   # Can go up to 2**7
-matrix_columns = 2**3 # Can go up to 2**6
+if SPARSE_MATRIX_USE:
+    from scipy.io import mmread
+    sparse_mat = mmread("c-67b.mtx")
+    matrix_rows = sparse_mat.shape[0]
+    matrix_columns = 20
+else:
+    #These seem to be the values that result in a PSD matrix
+    matrix_rows = 2**8   # Can go up to 2**7
+    matrix_columns = 2**3 # Can go up to 2**6
 
 
 assert matrix_rows % size == 0, "We cannot evenly row distribute the matrix"
@@ -67,7 +73,11 @@ A_local = np.empty((blocks, matrix_columns), dtype=np.float64)
 Q = np.empty((matrix_rows, matrix_columns), dtype=np.float64) 
 
 if rank == 0:
-    A = gen_matrix(matrix_rows, matrix_columns)
+    if SPARSE_MATRIX_USE:
+        A[:,:] = np.delete(sparse_mat.todense(), np.arange(matrix_columns, sparse_mat.shape[1]), 1)
+    else:
+        A = gen_matrix(matrix_rows, matrix_columns)
+    
     assert np.all(np.linalg.eigvals(A.T @ A) > 0), "The A.T@A is not a positive definite matrix"
 
 

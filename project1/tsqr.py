@@ -5,6 +5,7 @@ import sys
 
 #Set this to true to get a CSV friendly output
 CSV_OUT = True
+SPARSE_MATRIX_USE = False
 
 
 # put this somewhere but before calling the asserts
@@ -36,10 +37,8 @@ def gen_matrix(rows, columns):
 def tsqr(A_local, comm, matrix_rows, matrix_cols):
     rank = comm.Get_rank()
     size = comm.Get_size()
-    householder_vectors = []
 
     Y_local, R_local = np.linalg.qr(A_local, mode='complete')
-    # householder_vectors.append(Y_local) 
     Q_matrices = [] 
     Q_matrices = comm.gather(Y_local, root=0)
     
@@ -70,7 +69,6 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
                     #Send the Y_local to 0
                     comm.Send(Y_local, dest=0, tag=1)
                     print("Processor ", rank, ": Finished sending Q to 0")
-                #householder_vectors.append(Y_local)
             else:
                 print("Processor ", rank, ": Sending R to ", rank-step)
                 comm.Send(R_local, dest=partner, tag=0)
@@ -99,8 +97,14 @@ size = comm.Get_size()
 
 assert isPowOfTwo(size), "The number of nodes must be a power of 2" 
 
-matrix_rows = 4**4
-matrix_columns = 4
+if SPARSE_MATRIX_USE:
+    from scipy.io import mmread
+    sparse_mat = mmread("c-67b.mtx")
+    matrix_rows = sparse_mat.shape[0]
+    matrix_columns = 20
+else:
+    matrix_rows = 4**4
+    matrix_columns = 4
 
 assert matrix_rows > matrix_columns, "The matrix is not tall is skinny. Number of rows must be greater than columns"
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"
@@ -115,7 +119,10 @@ A_local = np.empty((blocks, matrix_columns), dtype=np.float64)
 
 if rank == 0:
     # Machine precision for double is 10^-16
-    A = gen_matrix(matrix_rows, matrix_columns)
+    if SPARSE_MATRIX_USE:
+        A[:,:] = np.delete(sparse_mat.todense(), np.arange(matrix_columns, sparse_mat.shape[1]), 1)
+    else:
+        A = gen_matrix(matrix_rows, matrix_columns)
 
 start = MPI.Wtime()
 comm.Scatterv(A, A_local, root=0)

@@ -5,7 +5,7 @@ import sys
 
 #Set this to true to get a CSV friendly output
 CSV_OUT = True
-
+SPARSE_MATRIX_USE = False
 
 # put this somewhere but before calling the asserts
 sys_excepthook = sys.excepthook
@@ -63,9 +63,14 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 
-
-matrix_rows = 4
-matrix_columns = 4**4
+if SPARSE_MATRIX_USE:
+    from scipy.io import mmread
+    sparse_mat = mmread("c-67b.mtx")
+    matrix_rows = sparse_mat.shape[0]
+    matrix_columns = 20
+else:
+    matrix_rows = 4
+    matrix_columns = 4**4
 
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"
 
@@ -79,7 +84,10 @@ Q = np.empty((matrix_rows, matrix_columns), dtype=np.float64)
 
 if rank == 0:
     # Machine precision for double is 10^-16
-    A = gen_matrix(matrix_rows, matrix_columns)
+    if SPARSE_MATRIX_USE:
+        A[:,:] = np.delete(sparse_mat.todense(), np.arange(matrix_columns, sparse_mat.shape[1]), 1)
+    else:
+        A = gen_matrix(matrix_rows, matrix_columns)
 
 start = MPI.Wtime()
 comm.Scatterv(A, A_local, root=0)
