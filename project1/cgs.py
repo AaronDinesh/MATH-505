@@ -53,8 +53,8 @@ def parallel_cgs(A_local, comm, matrix_rows, matrix_cols):
         R[j, j] = np.sqrt(beta)
         local_Q[:, j] = local_Q[:, j] / R[j, j]
         
-        tst = np.empty((matrix_rows, matrix_cols), dtype=np.float64)
-        comm.Gatherv(local_Q, tst, root=0)
+        tst = np.empty((matrix_rows, j), dtype=np.float64)
+        comm.gatherv(local_Q[:, :j], tst, root=0)
         if comm.rank == 0:
             #print(f"[{j}] Loss of Orthogonality: ", np.linalg.norm((np.eye(local_Q.shape[1]) - local_Q.T@local_Q)), "Condition Number: ", np.linalg.cond(local_Q))   
             print(f"[{j}] Loss of Orthogonality: ", np.linalg.norm((np.eye(tst.shape[1]) - tst.T@tst)), "Condition Number: ", np.linalg.cond(tst))   
@@ -72,8 +72,8 @@ if SPARSE_MATRIX_USE:
     matrix_rows = 1024*4
     matrix_columns = 10
 else:
-    matrix_rows = 1024*2
-    matrix_columns = 100
+    matrix_rows = 2**16
+    matrix_columns = 390
 
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"
 
