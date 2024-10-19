@@ -66,11 +66,11 @@ size = comm.Get_size()
 if SPARSE_MATRIX_USE:
     from scipy.io import mmread
     sparse_mat = mmread("c-67b.mtx")
-    matrix_rows = 12672 # max number of cores allowed in Helvetios on parallel mode.
-    matrix_columns = 20
+    matrix_rows = 1024*4
+    matrix_columns = 10
 else:
-    matrix_rows = 256
-    matrix_columns = 4
+    matrix_rows = 1024*2
+    matrix_columns = 100
 
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"
 
@@ -85,7 +85,7 @@ Q = np.empty((matrix_rows, matrix_columns), dtype=np.float64)
 if rank == 0:
     # Machine precision for double is 10^-16
     if SPARSE_MATRIX_USE:
-        A[:,:] = np.delete(np.delete(sparse_mat.todense(), np.arange(matrix_columns, sparse_mat.shape[1]), 1), np.arange(matrix_rows, sparse_mat.shape[0]), 0)
+        A = np.delete(np.delete(sparse_mat.todense(), np.arange(matrix_columns, sparse_mat.shape[1]), 1), np.arange(matrix_rows, sparse_mat.shape[0]), 0)
     else:
         A = gen_matrix(matrix_rows, matrix_columns)
 

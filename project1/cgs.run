@@ -1,11 +1,11 @@
 #!/bin/bash -l
 #SBATCH --nodes=32
-#SBATCH --ntasks-per-node=8
+#SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=1
 #SBATCH --time=30:00
 #SBATCH --qos=parallel
 #SBATCH --account=math-505
-#SBATCH --output=./runs/cgs_run_1.txt
+#SBATCH --output=./runs/cgs_run_4.txt
 
 module load gcc openmpi python py-mpi4py
 srun python cgs.py
