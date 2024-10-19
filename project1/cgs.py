@@ -30,8 +30,8 @@ def gen_matrix(rows, columns):
 
 
 def parallel_cgs(A_local, comm, matrix_rows, matrix_cols):
-    R = np.empty((matrix_cols, matrix_cols), dtype=np.float64)
-    local_Q = np.empty((A_local.shape[0], matrix_cols), dtype=np.float64)
+    R = np.zeros((matrix_cols, matrix_cols), dtype=np.float64)
+    local_Q = np.zeros((A_local.shape[0], matrix_cols), dtype=np.float64)
     beta_local = np.power(np.linalg.norm(A_local[:, 0]), 2)
 
 
@@ -69,8 +69,8 @@ if SPARSE_MATRIX_USE:
     matrix_rows = sparse_mat.shape[0]
     matrix_columns = 20
 else:
-    matrix_rows = 4
-    matrix_columns = 4**4
+    matrix_rows = 256
+    matrix_columns = 4
 
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"
 
