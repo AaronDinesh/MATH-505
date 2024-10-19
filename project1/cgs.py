@@ -54,7 +54,7 @@ def parallel_cgs(A_local, comm, matrix_rows, matrix_cols):
         local_Q[:, j] = local_Q[:, j] / R[j, j]
         
         tst = np.empty((matrix_rows, matrix_cols), dtype=np.float64)
-        comm.Gatherv(Q_local, tst, root=0)
+        comm.Gatherv(local_Q, tst, root=0)
         if comm.rank == 0:
             #print(f"[{j}] Loss of Orthogonality: ", np.linalg.norm((np.eye(local_Q.shape[1]) - local_Q.T@local_Q)), "Condition Number: ", np.linalg.cond(local_Q))   
             print(f"[{j}] Loss of Orthogonality: ", np.linalg.norm((np.eye(tst.shape[1]) - tst.T@tst)), "Condition Number: ", np.linalg.cond(tst))   

@@ -1,100 +1,100 @@
-[1] Loss of Orthogonality:  9.9999981546182
-[2] Loss of Orthogonality:  9.999995833460925
-[3] Loss of Orthogonality:  9.999982804734232
-[4] Loss of Orthogonality:  9.999382138282295
-[5] Loss of Orthogonality:  9.996555355298185
-[6] Loss of Orthogonality:  9.995811144639573
-[7] Loss of Orthogonality:  9.995593719247907
-[8] Loss of Orthogonality:  9.995429131745448
-[9] Loss of Orthogonality:  9.995425070069693
-[10] Loss of Orthogonality:  9.994880914520241
-[11] Loss of Orthogonality:  9.992154685312773
-[12] Loss of Orthogonality:  9.991473438464554
-[13] Loss of Orthogonality:  9.991352086102006
-[14] Loss of Orthogonality:  9.991279284418962
-[15] Loss of Orthogonality:  9.991224709698285
-[16] Loss of Orthogonality:  9.991064896139545
-[17] Loss of Orthogonality:  9.98410791079763
-[18] Loss of Orthogonality:  9.983007781851876
-[19] Loss of Orthogonality:  9.982882021846354
-[20] Loss of Orthogonality:  9.982818862251845
-[21] Loss of Orthogonality:  9.982733717479858
-[22] Loss of Orthogonality:  9.982708625500157
-[23] Loss of Orthogonality:  9.98227817412098
-[24] Loss of Orthogonality:  9.97903579398547
-[25] Loss of Orthogonality:  9.978977030340742
-[26] Loss of Orthogonality:  9.978937404868041
-[27] Loss of Orthogonality:  9.978904952952998
-[28] Loss of Orthogonality:  9.978842314769276
-[29] Loss of Orthogonality:  9.978338051869319
-[30] Loss of Orthogonality:  9.977961065569184
-[31] Loss of Orthogonality:  9.977920935610271
-[32] Loss of Orthogonality:  9.977873263159063
-[33] Loss of Orthogonality:  9.977842278396565
-[34] Loss of Orthogonality:  9.977782904200543
-[35] Loss of Orthogonality:  9.977441509666804
-[36] Loss of Orthogonality:  9.977161793186012
-[37] Loss of Orthogonality:  9.977129575011913
-[38] Loss of Orthogonality:  9.977081053370036
-[39] Loss of Orthogonality:  9.977050567168092
-[40] Loss of Orthogonality:  9.977004533962763
-[41] Loss of Orthogonality:  9.976795803797076
-[42] Loss of Orthogonality:  9.976380010567425
-[43] Loss of Orthogonality:  9.976156479838492
-[44] Loss of Orthogonality:  9.976118268692943
-[45] Loss of Orthogonality:  9.976091513958742
-[46] Loss of Orthogonality:  9.97604389136761
-[47] Loss of Orthogonality:  9.975648361002719
-[48] Loss of Orthogonality:  9.97517700072912
-[49] Loss of Orthogonality:  9.975066722982858
-[50] Loss of Orthogonality:  9.975004282175927
-[51] Loss of Orthogonality:  9.974956498585236
-[52] Loss of Orthogonality:  9.974918003499777
-[53] Loss of Orthogonality:  9.974743803638333
-[54] Loss of Orthogonality:  9.974294142241877
-[55] Loss of Orthogonality:  9.973543992449352
-[56] Loss of Orthogonality:  9.973485446129871
-[57] Loss of Orthogonality:  9.973432993038083
-[58] Loss of Orthogonality:  9.97339642621593
-[59] Loss of Orthogonality:  9.973287834250662
-[60] Loss of Orthogonality:  9.972896772402022
-[61] Loss of Orthogonality:  9.972553557956815
-[62] Loss of Orthogonality:  9.972501028261984
-[63] Loss of Orthogonality:  9.972445556366651
-[64] Loss of Orthogonality:  9.972408799184976
-[65] Loss of Orthogonality:  9.972333690945353
-[66] Loss of Orthogonality:  9.972025989771852
-[67] Loss of Orthogonality:  9.971682171521374
-[68] Loss of Orthogonality:  9.971635523116833
-[69] Loss of Orthogonality:  9.971578909513568
-[70] Loss of Orthogonality:  9.971541098585032
-[71] Loss of Orthogonality:  9.971490628637609
-[72] Loss of Orthogonality:  9.97131685191622
-[73] Loss of Orthogonality:  9.970931549074404
-[74] Loss of Orthogonality:  9.970697935547514
-[75] Loss of Orthogonality:  9.970638710609002
-[76] Loss of Orthogonality:  9.970598686614359
-[77] Loss of Orthogonality:  9.970547473568375
-[78] Loss of Orthogonality:  9.970383033593183
-[79] Loss of Orthogonality:  9.969969153281252
-[80] Loss of Orthogonality:  9.969894429176534
-[81] Loss of Orthogonality:  9.969828566923482
-[82] Loss of Orthogonality:  9.969779309285446
-[83] Loss of Orthogonality:  9.969738657096187
-[84] Loss of Orthogonality:  9.969571783994395
-[85] Loss of Orthogonality:  9.969169488457592
-[86] Loss of Orthogonality:  9.968709737490395
-[87] Loss of Orthogonality:  9.968649226953321
-[88] Loss of Orthogonality:  9.968596306364885
-[89] Loss of Orthogonality:  9.968557818050876
-[90] Loss of Orthogonality:  9.968453209866254
-[91] Loss of Orthogonality:  9.96811193023127
-[92] Loss of Orthogonality:  9.967779638085773
-[93] Loss of Orthogonality:  9.967732138799608
-[94] Loss of Orthogonality:  9.96767675209029
-[95] Loss of Orthogonality:  9.967638165851515
-[96] Loss of Orthogonality:  9.967567457607434
-[97] Loss of Orthogonality:  9.967308761216755
-[98] Loss of Orthogonality:  9.966959600037605
-[99] Loss of Orthogonality:  9.966837180154899
-0.074754556,3.3146119031223867e-12,142362.37068962705,66.54926410002551
+[1] Loss of Orthogonality:  9.921774456437385 Condition Number:  inf
+[2] Loss of Orthogonality:  9.885519200073585 Condition Number:  inf
+[3] Loss of Orthogonality:  9.85045624936551 Condition Number:  inf
+[4] Loss of Orthogonality:  9.818516646947126 Condition Number:  inf
+[5] Loss of Orthogonality:  9.790090317451732 Condition Number:  inf
+[6] Loss of Orthogonality:  9.790707536111276 Condition Number:  inf
+[7] Loss of Orthogonality:  9.832920768494638 Condition Number:  inf
+[8] Loss of Orthogonality:  9.894667955086806 Condition Number:  inf
+[9] Loss of Orthogonality:  9.90367809916135 Condition Number:  inf
+[10] Loss of Orthogonality:  9.944250406315382 Condition Number:  inf
+[11] Loss of Orthogonality:  10.062088408378523 Condition Number:  inf
+[12] Loss of Orthogonality:  10.244610251309759 Condition Number:  inf
+[13] Loss of Orthogonality:  10.362412038990168 Condition Number:  inf
+[14] Loss of Orthogonality:  10.487478784010548 Condition Number:  inf
+[15] Loss of Orthogonality:  10.629962628357166 Condition Number:  inf
+[16] Loss of Orthogonality:  10.699288777041891 Condition Number:  inf
+[17] Loss of Orthogonality:  10.802505591291508 Condition Number:  inf
+[18] Loss of Orthogonality:  11.17487409371352 Condition Number:  inf
+[19] Loss of Orthogonality:  11.713070834587207 Condition Number:  inf
+[20] Loss of Orthogonality:  12.305860403717704 Condition Number:  inf
+[21] Loss of Orthogonality:  12.893898331411561 Condition Number:  inf
+[22] Loss of Orthogonality:  13.104289396938997 Condition Number:  inf
+[23] Loss of Orthogonality:  13.59421796115328 Condition Number:  inf
+[24] Loss of Orthogonality:  13.716467816659373 Condition Number:  inf
+[25] Loss of Orthogonality:  14.428904871737105 Condition Number:  inf
+[26] Loss of Orthogonality:  15.174295168917057 Condition Number:  inf
+[27] Loss of Orthogonality:  15.910504086703297 Condition Number:  inf
+[28] Loss of Orthogonality:  16.43912310100438 Condition Number:  inf
+[29] Loss of Orthogonality:  16.709300036185834 Condition Number:  inf
+[30] Loss of Orthogonality:  17.264375274637707 Condition Number:  inf
+[31] Loss of Orthogonality:  18.065189527000268 Condition Number:  inf
+[32] Loss of Orthogonality:  18.885841528216073 Condition Number:  inf
+[33] Loss of Orthogonality:  19.691501070533285 Condition Number:  inf
+[34] Loss of Orthogonality:  20.32755810337404 Condition Number:  inf
+[35] Loss of Orthogonality:  20.61245802225282 Condition Number:  inf
+[36] Loss of Orthogonality:  21.155054362835994 Condition Number:  inf
+[37] Loss of Orthogonality:  21.969878180191568 Condition Number:  inf
+[38] Loss of Orthogonality:  22.824256051698956 Condition Number:  inf
+[39] Loss of Orthogonality:  23.671648963445065 Condition Number:  inf
+[40] Loss of Orthogonality:  24.416443643527575 Condition Number:  inf
+[41] Loss of Orthogonality:  24.86740252042506 Condition Number:  inf
+[42] Loss of Orthogonality:  25.24848109859567 Condition Number:  inf
+[43] Loss of Orthogonality:  25.888165120508333 Condition Number:  inf
+[44] Loss of Orthogonality:  26.58508456797141 Condition Number:  inf
+[45] Loss of Orthogonality:  27.40963873143296 Condition Number:  inf
+[46] Loss of Orthogonality:  28.22938327934394 Condition Number:  inf
+[47] Loss of Orthogonality:  29.067741874725215 Condition Number:  inf
+[48] Loss of Orthogonality:  29.81156934189096 Condition Number:  inf
+[49] Loss of Orthogonality:  30.63033833035968 Condition Number:  inf
+[50] Loss of Orthogonality:  31.532366055603482 Condition Number:  inf
+[51] Loss of Orthogonality:  32.43795350024944 Condition Number:  inf
+[52] Loss of Orthogonality:  33.27979136098897 Condition Number:  inf
+[53] Loss of Orthogonality:  33.714943092441445 Condition Number:  inf
+[54] Loss of Orthogonality:  34.13301410123298 Condition Number:  inf
+[55] Loss of Orthogonality:  34.65145741686964 Condition Number:  inf
+[56] Loss of Orthogonality:  35.55389244206479 Condition Number:  inf
+[57] Loss of Orthogonality:  36.46128877890071 Condition Number:  inf
+[58] Loss of Orthogonality:  37.326522313895445 Condition Number:  inf
+[59] Loss of Orthogonality:  37.93411768394622 Condition Number:  inf
+[60] Loss of Orthogonality:  38.284418299073536 Condition Number:  inf
+[61] Loss of Orthogonality:  38.87936995088378 Condition Number:  inf
+[62] Loss of Orthogonality:  39.78325834003409 Condition Number:  inf
+[63] Loss of Orthogonality:  40.692055264786305 Condition Number:  inf
+[64] Loss of Orthogonality:  41.57460548687555 Condition Number:  inf
+[65] Loss of Orthogonality:  42.28146873664074 Condition Number:  inf
+[66] Loss of Orthogonality:  42.643994505649324 Condition Number:  inf
+[67] Loss of Orthogonality:  43.16282475723481 Condition Number:  inf
+[68] Loss of Orthogonality:  43.97286192702429 Condition Number:  inf
+[69] Loss of Orthogonality:  44.87915018344947 Condition Number:  inf
+[70] Loss of Orthogonality:  45.77639351823673 Condition Number:  inf
+[71] Loss of Orthogonality:  46.58050364961872 Condition Number:  inf
+[72] Loss of Orthogonality:  47.13679835018225 Condition Number:  inf
+[73] Loss of Orthogonality:  47.51431619481462 Condition Number:  inf
+[74] Loss of Orthogonality:  48.109453972028064 Condition Number:  inf
+[75] Loss of Orthogonality:  48.881179455844666 Condition Number:  inf
+[76] Loss of Orthogonality:  49.77649803788868 Condition Number:  inf
+[77] Loss of Orthogonality:  50.668260778329 Condition Number:  inf
+[78] Loss of Orthogonality:  51.56303412487014 Condition Number:  inf
+[79] Loss of Orthogonality:  52.34322019168877 Condition Number:  inf
+[80] Loss of Orthogonality:  53.069324937501065 Condition Number:  inf
+[81] Loss of Orthogonality:  53.98336608890103 Condition Number:  inf
+[82] Loss of Orthogonality:  54.901384307452226 Condition Number:  inf
+[83] Loss of Orthogonality:  55.76041925177872 Condition Number:  inf
+[84] Loss of Orthogonality:  56.28499468982821 Condition Number:  inf
+[85] Loss of Orthogonality:  56.68460087790296 Condition Number:  inf
+[86] Loss of Orthogonality:  57.26391290539823 Condition Number:  inf
+[87] Loss of Orthogonality:  58.175609726705105 Condition Number:  inf
+[88] Loss of Orthogonality:  59.09164376335732 Condition Number:  inf
+[89] Loss of Orthogonality:  59.97166181759394 Condition Number:  inf
+[90] Loss of Orthogonality:  60.63305229165638 Condition Number:  inf
+[91] Loss of Orthogonality:  61.0045813343704 Condition Number:  inf
+[92] Loss of Orthogonality:  61.55666836072315 Condition Number:  inf
+[93] Loss of Orthogonality:  62.466913939317266 Condition Number:  inf
+[94] Loss of Orthogonality:  63.380724113770306 Condition Number:  inf
+[95] Loss of Orthogonality:  64.27572960455818 Condition Number:  inf
+[96] Loss of Orthogonality:  65.02869116018378 Condition Number:  inf
+[97] Loss of Orthogonality:  65.45717850557634 Condition Number:  inf
+[98] Loss of Orthogonality:  65.91833644032829 Condition Number:  inf
+[99] Loss of Orthogonality:  66.54926410002551 Condition Number:  3918844.4743652125
+0.714052609,3.3146119031223867e-12,142362.37068962705,66.54926410002551
