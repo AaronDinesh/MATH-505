@@ -1,5 +1,8 @@
 import numpy as np
 from mpi4py import MPI
+from scipy.sparse import coo_matrix, csr_matrix, identity
+
+
 
 import sys
 
@@ -38,7 +41,7 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
     rank = comm.Get_rank()
     size = comm.Get_size()
 
-    Y_local, R_local = np.linalg.qr(A_local, mode='reduced')
+    Y_local, R_local = np.linalg.qr(A_local, mode='complete')
     Q_matrices = [] 
     Q_matrices = comm.gather(Y_local, root=0)
     
@@ -51,7 +54,7 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
                 neighbor_r = np.zeros_like(R_local, dtype=np.float64)
                 comm.Recv(neighbor_r, source=partner, tag=0)
                 #print("Processor ", rank, ": Finished receiving.")
-                Y_local, R_local = np.linalg.qr(np.vstack((R_local, neighbor_r)), mode='reduced')
+                Y_local, R_local = np.linalg.qr(np.vstack((R_local, neighbor_r)), mode='complete')
                 
                 if(rank == 0):
                     #First append the one from 0 and then append the remaining ones.
@@ -103,7 +106,7 @@ if SPARSE_MATRIX_USE:
     matrix_rows = sparse_mat.shape[0]
     matrix_columns = 20
 else:
-    matrix_rows = 2**9
+    matrix_rows = 2**16
     matrix_columns = 20
 
 assert matrix_rows > matrix_columns, "The matrix is not tall is skinny. Number of rows must be greater than columns"
@@ -134,24 +137,38 @@ if rank == 0:
     # The number of matricies that need to be placed depends on the nodes at each level of the binary tree
     # The matrices are also ordered by their position in the binary tree.
     
-    globalQ = np.eye(matrix_rows, matrix_columns, dtype=np.float64)
+
+
+    globalQ_rows = Q_matrices[0].shape[0]*size
+    globalQ_cols = Q_matrices[0].shape[1]*size
+    globalQ = identity(globalQ_rows, dtype=np.float64, format='csr')
     q_mat_vec_pos_offset = 0
 
     #from log2(size) -> 0
     for k in range(int(np.log2(size)), -1, -1):
         curr_level_node_count = 2**k
         
-        curr_level_q_hat = np.zeros((Q_matrices[q_mat_vec_pos_offset].shape[0] * curr_level_node_count,
-                                     Q_matrices[q_mat_vec_pos_offset].shape[1]), dtype=np.float64)
-
-
-        for j in range(curr_level_node_count):
-            globalQ = globalQ @ Q_matrices[q_mat_vec_pos_offset + j]
-       
+        curr_level_mat_data = np.array([])
+        curr_level_mat_row_idx = np.array([])
+        curr_level_mat_col_idx = np.array([])
         
+        
+        #Generate the required data in the COO format
+        for j in range(curr_level_node_count):
+            q_rows = Q_matrices[q_mat_vec_pos_offset + j].shape[0]
+            q_cols = Q_matrices[q_mat_vec_pos_offset + j].shape[1]
+            
+            curr_level_mat_data = np.concatenate((curr_level_mat_data, Q_matrices[q_mat_vec_pos_offset + j].flatten()))
+            row_idx, col_idx = np.meshgrid(np.arange(j*q_rows,j*q_rows + q_rows), np.arange(j*q_cols,j*q_cols + q_cols), indexing='ij')
+            curr_level_mat_row_idx = np.concatenate((curr_level_mat_row_idx, row_idx.flatten()))
+            curr_level_mat_col_idx = np.concatenate((curr_level_mat_col_idx, col_idx.flatten()))
+
+
+        curr_level_q_hat = coo_matrix((curr_level_mat_data, (curr_level_mat_row_idx, curr_level_mat_col_idx)),shape=(globalQ_rows, globalQ_cols), dtype=np.float64)
+        globalQ = globalQ @ curr_level_q_hat.tocsr()
         q_mat_vec_pos_offset += curr_level_node_count
 
-    A_reconstructed = globalQ @ R
+    A_reconstructed = globalQ.todense() @ R
 
     if CSV_OUT:
         end = MPI.Wtime() - start
