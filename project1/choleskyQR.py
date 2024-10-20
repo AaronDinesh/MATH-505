@@ -57,8 +57,8 @@ if SPARSE_MATRIX_USE:
     matrix_columns = 20
 else:
     #These seem to be the values that result in a PSD matrix
-    matrix_rows = 2**8   # Can go up to 2**7
-    matrix_columns = 2**3 # Can go up to 2**6
+    matrix_rows = 2**16   # Can go up to 2**7
+    matrix_columns = 96 # Can go up to 2**6
 
 
 assert matrix_rows % size == 0, "We cannot evenly row distribute the matrix"
