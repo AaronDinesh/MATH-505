@@ -4,7 +4,7 @@ import sys
 
 #Set to true, if you want the output to be in CSV friendly format
 CSV_OUT = True
-SPARSE_MATRIX_USE = True
+SPARSE_MATRIX_USE = False
 
 # put this somewhere but before calling the asserts
 sys_excepthook = sys.excepthook
@@ -58,7 +58,7 @@ if SPARSE_MATRIX_USE:
 else:
     #These seem to be the values that result in a PSD matrix
     matrix_rows = 2**16   # Can go up to 2**7
-    matrix_columns = 96 # Can go up to 2**6
+    matrix_columns = int(sys.argv[1]) # Can go up to 2**6
 
 
 assert matrix_rows % size == 0, "We cannot evenly row distribute the matrix"
