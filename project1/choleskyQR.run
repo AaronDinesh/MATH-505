@@ -1,11 +1,13 @@
 #!/bin/bash -l
-#SBATCH --nodes=32
-#SBATCH --ntasks-per-node=16
+#SBATCH --nodes=25
+#SBATCH --ntasks-per-node=3
 #SBATCH --cpus-per-task=1
 #SBATCH --time=01:30:00
 #SBATCH --qos=parallel
 #SBATCH --account=math-505
-#SBATCH --output=./runs/cqr/cqr_run_33_65535_96_512.txt
+##SBATCH --output=./runs/cqr/cqr_run_33_65535_96_75.txt
+
+run_number=$1
 
 module load gcc openmpi python py-mpi4py
-srun python choleskyQR.py
+srun --output="./runs/cqr/cqr_run_sparse_${run_number}_57975_190_75.txt" python choleskyQR.py

@@ -4,7 +4,7 @@ import sys
 
 #Set to true, if you want the output to be in CSV friendly format
 CSV_OUT = True
-SPARSE_MATRIX_USE = False
+SPARSE_MATRIX_USE = True
 
 # put this somewhere but before calling the asserts
 sys_excepthook = sys.excepthook
@@ -54,7 +54,7 @@ if SPARSE_MATRIX_USE:
     from scipy.io import mmread
     sparse_mat = mmread("c-67b.mtx")
     matrix_rows = sparse_mat.shape[0]
-    matrix_columns = 20
+    matrix_columns = 190
 else:
     #These seem to be the values that result in a PSD matrix
     matrix_rows = 2**16   # Can go up to 2**7

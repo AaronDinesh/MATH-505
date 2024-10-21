@@ -1,6 +1,6 @@
 #!/bin/bash -l
 #SBATCH --nodes=32
-#SBATCH --ntasks-per-node=16
+#SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=1
 #SBATCH --time=01:30:00
 #SBATCH --qos=parallel
@@ -8,8 +8,8 @@
 ##--output="./runs/tsqr/tsqr_run_12_8192_14_512.txt"
 
 run_number=$1
-col_number=$2
+col_number=190
 
 
 module load gcc openmpi python py-mpi4py
-srun --output="./runs/tsqr/tsqr_run_${run_number}_8192_${col_number}_512.txt" python tsqr_with_sparse.py
+srun --output="./runs/tsqr/tsqr_run_sparse_${run_number}_8192_${col_number}_75.txt" python tsqr_with_sparse.py

@@ -5,7 +5,7 @@ import sys
 
 #Set this to true to get a CSV friendly output
 CSV_OUT = True
-SPARSE_MATRIX_USE = False
+SPARSE_MATRIX_USE = True
 
 # put this somewhere but before calling the asserts
 sys_excepthook = sys.excepthook
@@ -57,7 +57,7 @@ def parallel_cgs(A_local, comm, matrix_rows, matrix_cols):
         comm.Gatherv(np.ascontiguousarray(local_Q[:, :j]), tst, root=0)
         if comm.rank == 0:
             #print(f"[{j}] Loss of Orthogonality: ", np.linalg.norm((np.eye(local_Q.shape[1]) - local_Q.T@local_Q)), "Condition Number: ", np.linalg.cond(local_Q))   
-            print(f"[{j}] Loss of Orthogonality: ", np.linalg.norm((np.eye(tst.shape[1]) - tst.T@tst)), "Condition Number: ", np.linalg.cond(tst))   
+            print(f"{np.linalg.norm((np.eye(tst.shape[1]) - tst.T@tst))},{np.linalg.cond(tst)}")   
     return local_Q, R
 
 #################
@@ -69,8 +69,8 @@ size = comm.Get_size()
 if SPARSE_MATRIX_USE:
     from scipy.io import mmread
     sparse_mat = mmread("c-67b.mtx")
-    matrix_rows = 1024*4
-    matrix_columns = 10
+    matrix_rows = sparse_mat.shape[0]
+    matrix_columns = 190
 else:
     matrix_rows = 2**16
     matrix_columns = 790
