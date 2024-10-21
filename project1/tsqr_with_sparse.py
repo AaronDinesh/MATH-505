@@ -106,8 +106,8 @@ if SPARSE_MATRIX_USE:
     matrix_rows = sparse_mat.shape[0]
     matrix_columns = 20
 else:
-    matrix_rows = 2**9
-    matrix_columns = 10
+    matrix_rows = 2**13
+    matrix_columns = 30
 
 assert matrix_rows > matrix_columns, "The matrix is not tall is skinny. Number of rows must be greater than columns"
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"
@@ -152,8 +152,6 @@ if rank == 0:
         curr_level_mat_row_idx = np.array([])
         curr_level_mat_col_idx = np.array([])
         
-        
-        print("Generating next Q matrix")
         #Generate the required data in the COO format
         for j in range(curr_level_node_count):
             q_rows = Q_matrices[q_mat_vec_pos_offset + j].shape[0]
@@ -167,7 +165,6 @@ if rank == 0:
 
         curr_level_q_hat = coo_matrix((curr_level_mat_data, (curr_level_mat_row_idx, curr_level_mat_col_idx)),shape=(globalQ_rows, globalQ_cols), dtype=np.float64)
         globalQ = globalQ @ curr_level_q_hat.tocsr()
-        print(f"Completed globalQ iteration {k}")
         q_mat_vec_pos_offset += curr_level_node_count
 
     A_reconstructed = globalQ.todense() @ R
