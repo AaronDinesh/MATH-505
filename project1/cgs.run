@@ -1,14 +1,15 @@
 #!/bin/bash -l
-#SBATCH --nodes=32
-#SBATCH --ntasks-per-node=2
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=01:30:00
-#SBATCH --qos=parallel
+#SBATCH --qos=serial
 #SBATCH --account=math-505
 ##The format is RunNumber_RowSize_ColSize_ProcCount.txt
-##SBATCH --output=./runs/cgs_run_sparse_1_57975_190_75.txt
+##SBATCH --output=/dev/null
 
 run_number=$1
+col_number=$2
 
 module load gcc openmpi python py-mpi4py
-srun --output="./runs/cgs/cgs_run_sparse_${run_number}_65535_60_64" python cgs.py
+srun --output="./runs/cgs/cgs_run_sequential_${run_number}_65535_${col_number}_1" python cgs.py ${col_number}
