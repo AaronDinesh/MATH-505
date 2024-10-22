@@ -1,6 +1,6 @@
 #!/bin/bash -l
-#SBATCH --nodes=25
-#SBATCH --ntasks-per-node=3
+#SBATCH --nodes=32
+#SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=1
 #SBATCH --time=01:30:00
 #SBATCH --qos=parallel
@@ -11,4 +11,4 @@
 run_number=$1
 
 module load gcc openmpi python py-mpi4py
-srun --output="./runs/cgs/cgs_run_sparse_${run_number}_57975_190_75" python cgs.py
+srun --output="./runs/cgs/cgs_run_sparse_${run_number}_65535_60_64" python cgs.py

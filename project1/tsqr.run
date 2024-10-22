@@ -12,4 +12,4 @@ col_number=$2
 
 
 module load gcc openmpi python py-mpi4py
-srun --output="./runs/tsqr/tsqr_run_${run_number}_8192_${col_number}_64.txt" python tsqr_with_sparse.py ${col_number}
+srun --output="./runs/tsqr/tsqr_run_${run_number}_65535_${col_number}_64.txt" python tsqr_with_sparse.py ${col_number}

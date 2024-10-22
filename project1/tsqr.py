@@ -103,7 +103,7 @@ if SPARSE_MATRIX_USE:
     matrix_rows = 2**13
     matrix_columns = 190
 else:
-    matrix_rows = 2**13
+    matrix_rows = 2**16
     matrix_columns = sys.argv[0]
 
 assert matrix_rows > matrix_columns, "The matrix is not tall is skinny. Number of rows must be greater than columns"
