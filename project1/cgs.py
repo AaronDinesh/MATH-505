@@ -72,7 +72,7 @@ if SPARSE_MATRIX_USE:
     matrix_rows = sparse_mat.shape[0]
     matrix_columns = 190
 else:
-    matrix_rows = 2**16
+    matrix_rows = 2**14
     matrix_columns = int(sys.argv[1])
 
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"

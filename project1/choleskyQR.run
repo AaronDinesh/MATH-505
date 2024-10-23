@@ -1,9 +1,9 @@
 #!/bin/bash -l
-#SBATCH --nodes=1
-#SBATCH --ntasks-per-node=1
+#SBATCH --nodes=32
+#SBATCH --ntasks-per-node=2
 #SBATCH --cpus-per-task=1
 #SBATCH --time=01:30:00
-#SBATCH --qos=serial
+#SBATCH --qos=parallel
 #SBATCH --account=math-505
 #SBATCH --output=/dev/null
 
@@ -11,4 +11,4 @@ run_number=$1
 col_number=$2
 
 module load gcc openmpi python py-mpi4py
-srun --output="./runs/cqr/cqr_run_sequential_${run_number}_65535_${col_number}_1.txt" python choleskyQR.py ${col_number}
+srun --output="./runs/cqr/cqr_run_${run_number}_16384_${col_number}_64.txt" python choleskyQR.py ${col_number}

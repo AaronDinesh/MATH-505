@@ -71,10 +71,14 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
                 else:
                     #Send the Y_local to 0
                     comm.Send(Y_local, dest=0, tag=1)
+                    
+                    #After we finish sending it, we dont need to store it anymore so we can delete it
+                    del Y_local
                     #print("Processor ", rank, ": Finished sending Q to 0")
             else:
                 #print("Processor ", rank, ": Sending R to ", rank-step)
                 comm.Send(R_local, dest=partner, tag=0)
+
                 #print("Processor ", rank, ": Finished sending R")
                 
                 #After we finish sending we can break the while loop since we are finished computing.
@@ -106,7 +110,7 @@ if SPARSE_MATRIX_USE:
     matrix_rows = sparse_mat.shape[0]
     matrix_columns = 20
 else:
-    matrix_rows = 2**13
+    matrix_rows = 2**14
     matrix_columns = int(sys.argv[1])
 
 assert matrix_rows > matrix_columns, "The matrix is not tall is skinny. Number of rows must be greater than columns"

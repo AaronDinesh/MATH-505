@@ -57,7 +57,7 @@ if SPARSE_MATRIX_USE:
     matrix_columns = 190
 else:
     #These seem to be the values that result in a PSD matrix
-    matrix_rows = 2**16   # Can go up to 2**7
+    matrix_rows = 2**14   # Can go up to 2**7
     matrix_columns = int(sys.argv[1]) # Can go up to 2**6
 
 
