@@ -1,2 +1,0 @@
-slurmstepd: error: Detected 1 oom_kill event in StepId=4089648.0. Some of the step tasks have been OOM Killed.
-slurmstepd: error: *** STEP 4089648.0 ON h209 CANCELLED AT 2024-10-23T12:22:42 ***

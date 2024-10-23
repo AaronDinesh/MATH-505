@@ -71,9 +71,6 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
                 else:
                     #Send the Y_local to 0
                     comm.Send(Y_local, dest=0, tag=1)
-                    
-                    #After we finish sending it, we dont need to store it anymore so we can delete it
-                    del Y_local
                     #print("Processor ", rank, ": Finished sending Q to 0")
             else:
                 #print("Processor ", rank, ": Sending R to ", rank-step)
@@ -110,7 +107,7 @@ if SPARSE_MATRIX_USE:
     matrix_rows = sparse_mat.shape[0]
     matrix_columns = 20
 else:
-    matrix_rows = 2**14
+    matrix_rows = 2**13
     matrix_columns = int(sys.argv[1])
 
 assert matrix_rows > matrix_columns, "The matrix is not tall is skinny. Number of rows must be greater than columns"
@@ -135,6 +132,8 @@ start = MPI.Wtime()
 comm.Scatterv(A, A_local, root=0)
 Q_matrices, R = tsqr(A_local, comm, matrix_rows, matrix_columns)
 
+#remove this
+end = MPI.Wtime() - start
 if rank == 0:
     assert np.allclose(R, np.triu(R)), "R is not upper triangular"
     # Now we need to assemble the proper Q matrix. They need to be placed on the diagonals of a matrix. 
@@ -165,19 +164,17 @@ if rank == 0:
             row_idx, col_idx = np.meshgrid(np.arange(j*q_rows,j*q_rows + q_rows), np.arange(j*q_cols,j*q_cols + q_cols), indexing='ij')
             curr_level_mat_row_idx = np.concatenate((curr_level_mat_row_idx, row_idx.flatten()))
             curr_level_mat_col_idx = np.concatenate((curr_level_mat_col_idx, col_idx.flatten()))
-
-
+    
+    
         curr_level_q_hat = coo_matrix((curr_level_mat_data, (curr_level_mat_row_idx, curr_level_mat_col_idx)),shape=(globalQ_rows, globalQ_cols), dtype=np.float64)
         globalQ = globalQ @ curr_level_q_hat.tocsr()
         q_mat_vec_pos_offset += curr_level_node_count
 
     A_reconstructed = globalQ.todense() @ R
-
     if CSV_OUT:
-        end = MPI.Wtime() - start
         print(f"{end},{np.linalg.norm((A - A_reconstructed))},{np.linalg.cond(A)},{np.linalg.norm((np.eye(globalQ.shape[1]) - globalQ.T@globalQ))}")
     else:
-        print("Total execution time: ", MPI.Wtime() - start)
+        print("Total execution time: ", end)
         print("Accuracy of Factorisation: ", np.linalg.norm(A - A_reconstructed))
         print("Condition Number: ", np.linalg.cond(A))
         print("Loss of Orthogonality: ", np.linalg.norm((np.eye(globalQ.shape[1]) - globalQ.T@globalQ)))
