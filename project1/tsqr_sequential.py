@@ -33,7 +33,7 @@ size = comm.Get_size()
 
 assert isPowOfTwo(size), "The number of nodes must be a power of 2" 
 
-matrix_rows = 2**15
+matrix_rows = 2**14
 matrix_columns = int(sys.argv[1])
 
 assert matrix_rows > matrix_columns, "The matrix is not tall is skinny. Number of rows must be greater than columns"
