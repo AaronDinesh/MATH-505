@@ -38,41 +38,22 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
     rank = comm.Get_rank()
     size = comm.Get_size()
 
-    Y_local, R_local = np.linalg.qr(A_local, mode='complete')
-    Q_matrices = [] 
-    Q_matrices = comm.gather(Y_local, root=0)
+    Y_local, R_local = np.linalg.qr(A_local, mode='reduced')
+    Q_matrices = [Y_local] 
     
     step = 1
     while step < comm.Get_size():
         partner = rank ^ step
         if partner < size:
             if rank < partner:
-                #print("Processor ", rank, ": Recieving from ", partner)
+                print("Processor ", rank, ": Recieving from ", partner)
                 neighbor_r = np.zeros_like(R_local, dtype=np.float64)
                 comm.Recv(neighbor_r, source=partner, tag=0)
-                #print("Processor ", rank, ": Finished receiving.")
-                Y_local, R_local = np.linalg.qr(np.vstack((R_local, neighbor_r)), mode='complete')
-                
-                if(rank == 0):
-                    #First append the one from 0 and then append the remaining ones.
-                    Q_matrices.append(Y_local)
-                    
-                    #The list comprehension determines the rank of the remaining processors
-                    #The for loop guarantees that we receive it in order.
-                    for i in [x for x in np.arange(1, size) if x % (step*2) == 0]:
-                        other_Q_mat = np.empty_like(Y_local ,dtype=np.float64) 
-                        #receive from the remaining matrices
-                        comm.Recv(other_Q_mat, source=i, tag=1)
-                        #print("Processor 0: Finished receving from ", i)
-                        Q_matrices.append(other_Q_mat)
-                else:
-                    #Send the Y_local to 0
-                    comm.Send(Y_local, dest=0, tag=1)
-                    #print("Processor ", rank, ": Finished sending Q to 0")
+                print("Processor ", rank, ": Finished receiving.")
+                Y_local, R_local = np.linalg.qr(np.vstack((R_local, neighbor_r)), mode='reduced')
+                Q_matrices.append(Y_local)
             else:
-                #print("Processor ", rank, ": Sending R to ", rank-step)
                 comm.Send(R_local, dest=partner, tag=0)
-                #print("Processor ", rank, ": Finished sending R")
                 
                 #After we finish sending we can break the while loop since we are finished computing.
                 break
@@ -86,7 +67,10 @@ def tsqr(A_local, comm, matrix_rows, matrix_cols):
 
     return Q_matrices, R_local
 
-
+def tsqr_applyQ(Q_matrices, B_local):
+    for i in range(len(Q_matrices)):
+        B_local = np.dot(Q_matrices[i], B_local)
+    return B_local
 
 
 #################
@@ -103,8 +87,8 @@ if SPARSE_MATRIX_USE:
     matrix_rows = 2**13
     matrix_columns = 190
 else:
-    matrix_rows = 2**16
-    matrix_columns = sys.argv[0]
+    matrix_rows = 2**10
+    matrix_columns = 50
 
 assert matrix_rows > matrix_columns, "The matrix is not tall is skinny. Number of rows must be greater than columns"
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"
@@ -128,36 +112,22 @@ start = MPI.Wtime()
 comm.Scatterv(A, A_local, root=0)
 Q_matrices, R = tsqr(A_local, comm, matrix_rows, matrix_columns)
 
+localIden = np.zeros_like(A_local)
+Imn = np.eye(A.shape[0], A.shape[1])
+
+comm.Scatter(Imn, localIden, root=0)
+partialQ = tsqr_applyQ(Q_matrices, localIden)
+Q = np.zeros_like(A)
+comm.Gather(partialQ, Q, root=0)
+A_reconstructed = Q @ R
+
 if rank == 0:
-    assert np.allclose(R, np.triu(R)), "R is not upper triangular"
-    # Now we need to assemble the proper Q matrix. They need to be placed on the diagonals of a matrix. 
-    # The number of matricies that need to be placed depends on the nodes at each level of the binary tree
-    # The matrices are also ordered by their position in the binary tree.
-    
-    globalQ = np.eye(Q_matrices[0].shape[0]*size, Q_matrices[0].shape[1]*size, dtype=np.float64)
-    q_mat_vec_pos_offset = 0
-
-    #from log2(size) -> 0
-    for k in range(int(np.log2(size)), -1, -1):
-        curr_level_node_count = 2**k
-        curr_level_q_hat = np.zeros((Q_matrices[q_mat_vec_pos_offset].shape[0]*curr_level_node_count, Q_matrices[q_mat_vec_pos_offset].shape[1]*curr_level_node_count), dtype=np.float64)
-        for j in range(curr_level_node_count):
-            q_rows = Q_matrices[q_mat_vec_pos_offset + j].shape[0]
-            q_cols = Q_matrices[q_mat_vec_pos_offset + j].shape[1]
-            # This will fill in Q-hat with matrices along the diagonal
-            curr_level_q_hat[j*q_rows:j*q_rows + q_rows, j*q_cols:j*q_cols + q_cols] = Q_matrices[q_mat_vec_pos_offset + j]
-       
-        globalQ = globalQ @ curr_level_q_hat
-        q_mat_vec_pos_offset += curr_level_node_count
-
-    A_reconstructed = globalQ @ R
-
     if CSV_OUT:
         end = MPI.Wtime() - start
-        print(f"{end},{np.linalg.norm((A - A_reconstructed))},{np.linalg.cond(A)},{np.linalg.norm((np.eye(globalQ.shape[1]) - globalQ.T@globalQ))}")
+        print(f"{end},{np.linalg.norm((A - A_reconstructed))},{np.linalg.cond(A)},{np.linalg.norm((np.eye(Q.shape[1]) - Q.T@Q))}")
     else:
         print("Total execution time: ", MPI.Wtime() - start)
         print("Accuracy of Factorisation: ", np.linalg.norm(A - A_reconstructed))
         print("Condition Number: ", np.linalg.cond(A))
-        print("Loss of Orthogonality: ", np.linalg.norm((np.eye(globalQ.shape[1]) - globalQ.T@globalQ)))
+        print("Loss of Orthogonality: ", np.linalg.norm((np.eye(Q.shape[1]) - Q.T@Q)))
      
