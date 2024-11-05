@@ -53,11 +53,11 @@ def parallel_cgs(A_local, comm, matrix_rows, matrix_cols):
         R[j, j] = np.sqrt(beta)
         local_Q[:, j] = local_Q[:, j] / R[j, j]
         
-        tst = np.empty((matrix_rows, j), dtype=np.float64)
-        comm.Gatherv(np.ascontiguousarray(local_Q[:, :j]), tst, root=0)
-        if comm.rank == 0:
+        #tst = np.empty((matrix_rows, j), dtype=np.float64)
+        #comm.Gatherv(np.ascontiguousarray(local_Q[:, :j]), tst, root=0)
+        #if comm.rank == 0:
             #print(f"[{j}] Loss of Orthogonality: ", np.linalg.norm((np.eye(local_Q.shape[1]) - local_Q.T@local_Q)), "Condition Number: ", np.linalg.cond(local_Q))   
-            print(f"{np.linalg.norm((np.eye(tst.shape[1]) - tst.T@tst))},{np.linalg.cond(tst)}")   
+            #print(f"{np.linalg.norm((np.eye(tst.shape[1]) - tst.T@tst))},{np.linalg.cond(tst)}")   
     return local_Q, R
 
 #################
@@ -72,7 +72,7 @@ if SPARSE_MATRIX_USE:
     matrix_rows = sparse_mat.shape[0]
     matrix_columns = 190
 else:
-    matrix_rows = 2**14
+    matrix_rows = 2**16
     matrix_columns = int(sys.argv[1])
 
 assert matrix_rows % size == 0, "The matrix cannot be evenly row distributed"
@@ -92,16 +92,17 @@ if rank == 0:
     else:
         A = gen_matrix(matrix_rows, matrix_columns)
 
-start = MPI.Wtime()
 comm.Scatterv(A, A_local, root=0)
+
+start = MPI.Wtime()
 Q_local, R = parallel_cgs(A_local, comm, matrix_rows, matrix_columns)
+end = MPI.Wtime() - start
 comm.Gatherv(Q_local, Q, root=0)
 
 
 if rank == 0:
-    end = MPI.Wtime() - start
     if CSV_OUT:
-        print(f"{end},{np.linalg.norm((A - Q@R))},{np.linalg.cond(A)},{np.linalg.norm((np.eye(Q.shape[1]) - Q.T@Q))}")
+        print(f"{end},{np.linalg.norm((A - Q@R))},{np.linalg.cond(A)},{np.linalg.norm((np.eye(Q.shape[1]) - Q.T@Q))},{np.linalg.cond(Q)}")
     else:
         print("Time Taken: ", end)
         print("Accuracy of Factorisation: ", np.linalg.norm((A - Q@R)))

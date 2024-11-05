@@ -57,7 +57,7 @@ if SPARSE_MATRIX_USE:
     matrix_columns = 190
 else:
     #These seem to be the values that result in a PSD matrix
-    matrix_rows = 2**14   # Can go up to 2**7
+    matrix_rows = 2**16   # Can go up to 2**7
     matrix_columns = int(sys.argv[1]) # Can go up to 2**6
 
 
@@ -81,20 +81,19 @@ if rank == 0:
     assert np.all(np.linalg.eigvals(A.T @ A) > 0), "The A.T@A is not a positive definite matrix"
 
 
-start = MPI.Wtime()
 #Split A among all the nodes
 comm.Scatterv(A, A_local, root=0)
 
+start = MPI.Wtime()
 #Compute cholesky in parallel
 Q_local, R = parallel_cholesky(A_local, comm)
-
+end = MPI.Wtime() - start
 #Gather all the local Q's from the nodes to node 0
 comm.Gatherv(Q_local, Q, root=0)
 
 if rank == 0:
-    end = MPI.Wtime() - start
     if CSV_OUT:
-        print(f"{end},{np.linalg.norm((A - Q@R))},{np.linalg.cond(A)},{np.linalg.norm((np.eye(Q.shape[1]) - Q.T@Q))}")
+        print(f"{end},{np.linalg.norm((A - Q@R))},{np.linalg.cond(A)},{np.linalg.norm((np.eye(Q.shape[1]) - Q.T@Q))},{np.linalg.cond(Q)}")
     else:
         print("Time Taken: ", end)
         print("Accuracy of Factorisation: ", np.linalg.norm((A - Q@R)))
